@@ -6,9 +6,12 @@ public class PlayerController : MonoBehaviour
 {
     Rigidbody2D rb2d;
     SpriteRenderer spr;
-
+    bool isGrounded;
+    int spellIndex1;
+    int spellIndex2;
     public GameObject shot;
-    //List<GameObject> spells; //button simply instantiates it, script decides where it goes
+    //List<GameObject> spells = new List<GameObject>(); //button simply instantiates it, script decides where it goes
+    public List<SpellBase> spells = new List<SpellBase>();
 
     private void Awake()
     {
@@ -18,12 +21,29 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        
+        //spells.Add(shot);
     }
 
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            spells[0].Cast();
+        }
+
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            spells[1].Cast();
+        }
+
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            spells[2].Cast();
+        }
+
+        //spell list
+        //shield and/or melee
+
     }
 
     private void FixedUpdate()
@@ -46,22 +66,8 @@ public class PlayerController : MonoBehaviour
             rb2d.velocity = new Vector2(rb2d.velocity.x, 8);
         }
 
-        if (Input.GetKeyDown(KeyCode.K)) //&& rate of fire
-        {
-            /*int flip = spr.flipX ? -1 : 1;
-            GameObject temp=
-            Instantiate(shot, transform.position + Vector3.right * 0.25f*flip, Quaternion.identity);
-            if (flip == -1)
-                temp.transform.Rotate(0, 0, 180);*/
-            Instantiate(shot);
-        }
-
-
-        //spell list
         //dash
         //double jump
-        //shield
-
     }
 
     void GetHit()
