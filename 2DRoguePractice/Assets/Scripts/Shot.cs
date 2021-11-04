@@ -29,9 +29,10 @@ public class Shot : MonoBehaviour
         transform.position += transform.right*speed*Time.deltaTime;
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("Hit");
+        if (!other.gameObject.CompareTag("Player"))
+            Debug.Log("Hit");
         //sound
     }
 }
