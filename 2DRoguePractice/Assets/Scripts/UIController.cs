@@ -32,7 +32,6 @@ public class UIController : MonoBehaviour
     }
     IEnumerator FadeScreenRoutine()
     {
-        //float testTime = Time.time;
         while(fadePanel.color.a < 1)
         {
             Color c = fadePanel.color;
@@ -40,13 +39,6 @@ public class UIController : MonoBehaviour
             fadePanel.color = c;
             yield return new WaitForSeconds(.025f);
         }
-        /*for(float i = 0; i < 1; i += 0.1f)
-        {
-            Color c = fadePanel.color;
-            c.a = i;
-            fadePanel.color = c;
-            yield return new WaitForSeconds(.01f);
-        }*/
 
         yield return new WaitForSeconds(1f);
 
@@ -57,14 +49,5 @@ public class UIController : MonoBehaviour
             fadePanel.color = c;
             yield return new WaitForSeconds(.025f);
         }
-
-        /*for (float i = 1; i > 0; i -= 0.1f)
-        {
-            Color c = fadePanel.color;
-            c.a = i;
-            fadePanel.color = c;
-            yield return new WaitForSeconds(.01f);
-        }
-        Debug.Log(Time.time - testTime);*/
     }
 }

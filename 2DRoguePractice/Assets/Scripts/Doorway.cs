@@ -27,12 +27,6 @@ public class Doorway : MonoBehaviour
     {
         if (nextDoor == null || nextDoor.myRoom == null)
             return;
-        GameManager.getInstance().PlayerThroughDoor(nextDoor.doorPlayerPos);
-        Invoke("SwitchRooms", 1.25f);
-    }
-    void SwitchRooms()
-    {
-        nextDoor.myRoom.ActivateRoom();
-        myRoom.DeactivateRoom();
+        GameManager.getInstance().PlayerThroughDoor(nextDoor.doorPlayerPos, myRoom, nextDoor.myRoom);
     }
 }

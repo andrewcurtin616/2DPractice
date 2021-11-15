@@ -28,28 +28,19 @@ public class RoomLayout : MonoBehaviour
 
     public void ActivateRoom()
     {
-        //StartCoroutine("ActivateRoomRoutine");
+        //enemies
+
         foreach (Transform t in GetComponentsInChildren<Transform>(true))
         {
             t.gameObject.SetActive(true);
         }
     }
 
-    IEnumerator ActivateRoomRoutine()
-    {
-        //wait for ui fade
-        yield return new WaitForSeconds(1.2f);
-        
-        //activate everything
-        foreach (Transform t in GetComponentsInChildren<Transform>(true))
-        {
-            t.gameObject.SetActive(true);
-        }
-    }
 
     public void DeactivateRoom()
     {
-        //StartCoroutine("DeactiateRoomRoutine");
+        //enemies
+
         foreach (Transform t in GetComponentsInChildren<Transform>())
         {
             if (t == transform)
@@ -57,20 +48,5 @@ public class RoomLayout : MonoBehaviour
             t.gameObject.SetActive(false);
         }
     }
-    IEnumerator DeactiateRoomRoutine()
-    {
-        //suspend enemies
-
-
-        //wait for ui fade
-        yield return new WaitForSeconds(1f);
-
-        //deactivate everything
-        foreach(Transform t in GetComponentsInChildren<Transform>())
-        {
-            if (t == transform)
-                continue;
-            t.gameObject.SetActive(false);
-        }
-    }
+    
 }

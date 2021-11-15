@@ -52,12 +52,12 @@ public class PlayerController : MonoBehaviour
         //spell list
         //shield and/or melee
 
-    }
+    /*}
 
     private void FixedUpdate()
     {
         if (isPaused)
-            return;
+            return;*/
 
         float h = Input.GetAxis("Horizontal");
         if (h != 0)
@@ -89,7 +89,6 @@ public class PlayerController : MonoBehaviour
     public void MovePlayer(Vector3 pos)
     {
         StartCoroutine("MovePlayerRoutine", pos);
-        //transform.position = pos;
     }
     IEnumerator MovePlayerRoutine(Vector3 pos)
     {
@@ -97,16 +96,25 @@ public class PlayerController : MonoBehaviour
         transform.position = pos;
     }
 
+    IEnumerator MovePlayerThroughDoor(Vector3 pos)
+    {
+        PausePlayer();
+        yield return new WaitForSeconds(1f);
+        transform.position = pos;
+        yield return new WaitForSeconds(0.75f);
+        UnPausePlayer();
+    }
+
     public void PausePlayer()
     {
         isPaused = true;
-        //hitbox
+        GetComponent<BoxCollider2D>().enabled = false;
         rb2d.gravityScale = 0;
     }
     public void UnPausePlayer()
     {
         isPaused = false;
-        //hitbox
+        GetComponent<BoxCollider2D>().enabled = true;
         rb2d.gravityScale = 1;
     }
 }

@@ -10,7 +10,7 @@ public class Shot : MonoBehaviour
     void Start()
     {
         //ignore player collision
-        Destroy(gameObject, 10);
+        //Destroy(gameObject, 10);
         //play sound
         GameObject player = GameObject.Find("Player");
         if (player.GetComponentInChildren<SpriteRenderer>().flipX)
@@ -27,6 +27,8 @@ public class Shot : MonoBehaviour
     void Update()
     {
         transform.position += transform.right*speed*Time.deltaTime;
+        //if (Mathf.Abs(transform.position.x) >= 50)
+            //Destroy(gameObject);
     }
 
     private void OnTriggerEnter2D(Collider2D other)

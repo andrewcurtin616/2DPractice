@@ -28,12 +28,16 @@ public class GameManager
 
     ////////////////////////////////////////////////////////////////////////
 
-    public void PlayerThroughDoor(Vector3 pos) //could pass in pos, current room, and next room
+    public void PlayerThroughDoor(Vector3 pos, RoomLayout currentRoom, RoomLayout nextRoom)
     {
         userInterface.FadeScreen();
-        player.PausePlayer();
-        player.MovePlayer(pos);
-        player.Invoke("UnPausePlayer", 1.75f);
+        player.StartCoroutine("MovePlayerThroughDoor", pos);
+        //player.PausePlayer();
+        nextRoom.Invoke("ActivateRoom", 1.25f);
+        currentRoom.Invoke("DeactivateRoom", 1.25f);
+        //player.MovePlayer(pos);
+        //player.StartCoroutine("MovePlayerRoutine", pos);
+        //player.Invoke("UnPausePlayer", 1.75f);
     }
 
 }
